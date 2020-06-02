@@ -1,18 +1,39 @@
 
+[1,2,3,5,6,7,8,9]
 
-function multiplyup(num){
-    return function(input){
-        return input*num;
+function winner(n,k){
+    let arr=[];
+    for(let i=0;i<n;++i){
+        arr[i]=i+1;
     }
-};
+    let counter=1;
+    let index=0;
+    let temp=0;
+    
+    console.log("bef spl",arr);
+    //arr.splice(5,1);
+    //console.log("after spl",arr);
+    while(arr.length){
 
-let doubler=multiplyup(2);
+        if(counter==k){
+            temp=arr[index];
+            let rem=arr.splice(index,1);
+            console.log("after spl",rem,arr);
+            counter=0;
+        }else{
+            index++;
+            if(index>=arr.length){
+                index=0;
+            }
+        }
 
-console.log(doubler(10));
+        counter++;
 
-str1="bada";
-str2="da";
-for(let i=1;i<str1.length;++i){
-   console.log( str1.substring(i,str1.length));
+    }
+    return temp;
 
-}     
+}
+
+console.log(winner(10,30));
+
+
